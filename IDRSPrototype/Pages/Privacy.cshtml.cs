@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ClassLibraryDatabase1;
 
 namespace IDRSPrototype.Pages
 {
@@ -12,8 +13,15 @@ namespace IDRSPrototype.Pages
             _logger = logger;
         }
 
+        PrivacyViewModel instance = new();
+
+        [BindProperty]
+        public string Message { get; set; } = string.Empty;
+        
         public void OnGet()
         {
+            Message = instance.PrintString();
+            //Message = "Hello world";
         }
     }
 }
