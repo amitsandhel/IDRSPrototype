@@ -6,5 +6,76 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome Test Hello IDRS</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div>
+    <h1>Transportation Tomorrow Survey</h1>
+</div>
+
+<div>
+    <select class="tabType" name="tabType">
+        <option value="cross">Cross Tabulation</option>
+        <option value="rec">Record Count</option>
+        <option value="freq">Frequency Distribution</option>
+    </select>
+    <select class="dataType" name="dataType">
+        <option value="hhld">Household</option>
+        <option value="pers">Person</option>
+        <option value="trip">Trip</option>
+        <option value="tran">Transit</option>
+    </select>
+    <select class="yearSelect" name="yearSelect" multiple="multiple">
+        <option value="2001">2001</option>
+        <option value="2011">2011</option>
+        <option value="2016">2016</option>
+    </select>
+    <input type="button" class="button1" value="Submit" />
+    <input type="button" class="button2" value="Reset" />
+</div>
+
+
+<div>
+    <p>To learn more about the TTS surveys and the data collected, please download the latest copy of the data guide (2.34 MB).</p>
+</div>
+<div>
+    <h1>Instructions</h1>
+
+    <h1>Tabulation Type</h1>
+    <h4>Cross Tabulation</h4>
+    <p>
+        Produces 2 or 3 dimensional tables. It is useful for creating origin-destination matrices such as number of trips by traffic zones and mode or cross-sectional analysis matrices such as age verses travel mode or household size verses dewlling types, etc.
+    </p>
+    <p>
+        Totals the number of surveys which meet the query criteria. It returns the number of observation and expanded total.
+    </p>
+    <h4>Record Count</h4>
+    <p>Totals the number of surveys which meet the query criteria. It returns the number of observation and expanded total.</p>
+    <h4>Frequency Distribution</h4>
+    <p>
+        Calculates the number of occurances, expanded total and % distribution for each category in the selected table attribute. It is useful for tabulating control totals in a data table.
+    </p>
+    
+    <p>
+        TTS data are categorized into Household, Person and Trip records. Specific transit route information are stored separately as Transit records. Specifying the Data Unit determines the control total for the tabulation. For example, selecting Person as the Data Unit implies tabulating total number of persons which meet the query criteria.
+    </p>
+    <h4>Data Type</h4>
+    <p>
+        TTS data are categorized into Household, Person and Trip records. Specific transit route information are stored separately as Transit records. Specifying the Data Unit determines the control total for the tabulation. For example, selecting Person as the Data Unit implies tabulating total number of persons which meet the query criteria.
+    </p>
+
+    <h4>Survey Year(s)</h4>
+    <p>
+        The TTS was conducted in 1986, 1991, 1996, 2001, 2006, 2011, and 2016. At least one survey year must be selected. If multiple years are selected, only the common fields will be available for extraction
+    </p>
+</div>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.tabType').select2();
+        $('.dataType').select2();
+        $('.yearSelect').select2();
+    });
+</script>
