@@ -13,24 +13,30 @@
 </div>
 
 <div>
-    <select class="tabType" name="tabType">
+    <select id="tabType" name="tabType">
         <option value="cross">Cross Tabulation</option>
         <option value="rec">Record Count</option>
         <option value="freq">Frequency Distribution</option>
     </select>
-    <select class="dataType" name="dataType">
+    <select id="dataType" name="dataType">
         <option value="hhld">Household</option>
         <option value="pers">Person</option>
         <option value="trip">Trip</option>
         <option value="tran">Transit</option>
     </select>
-    <select class="yearSelect" name="yearSelect" multiple="multiple">
+    <select id ="yearSelect"name="YearSelect" multiple="multiple">
         <option value="2001">2001</option>
         <option value="2011">2011</option>
         <option value="2016">2016</option>
     </select>
-    <input type="button" class="button1" value="Submit" />
-    <input type="button" class="button2" value="Reset" />
+    <input type="text" id="txtname" value="name" />
+    <form method="post">
+        <input type="submit" class="btn btn-primary" value="Submit" asp-page-handler="Submit" />
+        <input type="button" class="btn btn-primary" value="Reset" />
+        <hr class="border border-primary" />
+
+    </form>
+
 </div>
 
 
@@ -52,7 +58,7 @@
     <p>Totals the number of surveys which meet the query criteria. It returns the number of observation and expanded total.</p>
     <h4>Frequency Distribution</h4>
     <p>
-        Calculates the number of occurances, expanded total and % distribution for each category in the selected table attribute. It is useful for tabulating control totals in a data table.
+        Calculates the number of occurences, expanded total and % distribution for each category in the selected table attribute. It is useful for tabulating control totals in a data table.
     </p>
     
     <p>
