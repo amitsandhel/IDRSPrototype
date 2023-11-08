@@ -1,7 +1,8 @@
-﻿namespace ClassLibraryDatabase1
-{
-    public class Class1
-    {
+﻿using Microsoft.EntityFrameworkCore;
 
-    }
+namespace ClassLibraryDatabase1;
+
+public class Class1
+{
+
 }
