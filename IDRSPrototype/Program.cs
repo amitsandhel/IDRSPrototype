@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using ClassLibraryDatabase1.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<Newttsadmv1Context>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("TestDBContext") ?? throw new InvalidOperationException("Connection string 'IDRS' not found. Are you connecting to the postgresql database.")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
