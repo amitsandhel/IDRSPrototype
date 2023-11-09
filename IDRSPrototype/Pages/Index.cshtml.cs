@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ClassLibraryDatabase1.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Net;
+//using ClassLibraryDatabase1.Data;
 
 namespace IDRSPrototype.Pages
 {
@@ -7,25 +11,37 @@ namespace IDRSPrototype.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        // Context instance
+        private readonly ClassLibraryDatabase1.Data.Newttsadmv1Context _context;
+
+        // Constructor of class
+        public IndexModel(ILogger<IndexModel> logger, ClassLibraryDatabase1.Data.Newttsadmv1Context context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
-        {
+        // List of all TTS survey years.
+        public List<SelectListItem> YearsList { get; set; }
 
+        public async Task OnGet()
+        {
+            if(_context.Years is not null )
+            {
+                YearsList = _context.Years.Select(x => 
+                                                new SelectListItem
+                                                {
+                                                    Text = x.Year1.ToString(),
+                                                    Value = x.Id.ToString()
+                                                }).ToList();
+            }
         }
 
-        [BindProperty]
-        public string YearSelect { get; set; }
-        public IActionResult OnPostSubmit(string tabType, string dataType, string yearSelect, string txtname)
+        public IActionResult OnPostSubmit(string tabType, string dataType, int[] Years, string txtname)
         {
-
             // Get the selected value from the form
-            //SelectedValue = Request.Form["myDropdown"];
             var ans = Request.Form["txtname"];
-            YearSelect = Request.Form["yearSelect"];
+            var years = Years;
             return Redirect("/Privacy");
         }
     }

@@ -24,19 +24,14 @@
         <option value="trip">Trip</option>
         <option value="tran">Transit</option>
     </select>
-    <select id ="yearSelect"name="YearSelect" multiple="multiple">
-        <option value="2001">2001</option>
-        <option value="2011">2011</option>
-        <option value="2016">2016</option>
-    </select>
     <input type="text" id="txtname" value="name" />
+
     <form method="post">
+        <select class="Years" multiple="multiple" name="Years" asp-items="Model.YearsList"></select>
         <input type="submit" class="btn btn-primary" value="Submit" asp-page-handler="Submit" />
         <input type="button" class="btn btn-primary" value="Reset" />
         <hr class="border border-primary" />
-
     </form>
-
 </div>
 
 
@@ -83,5 +78,6 @@
         $('.tabType').select2();
         $('.dataType').select2();
         $('.yearSelect').select2();
+        $('.Years').select2();
     });
 </script>
