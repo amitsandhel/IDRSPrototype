@@ -16,6 +16,10 @@ public partial class Newttsadmv1Context : DbContext
     {
     }
 
+    public virtual DbSet<Category> Categories { get; set; }
+
+    public virtual DbSet<Tabulation> Tabulations { get; set; }
+
     public virtual DbSet<Year> Years { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,6 +27,16 @@ public partial class Newttsadmv1Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Category>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("category_pkey");
+        });
+
+        modelBuilder.Entity<Tabulation>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("tabulation_pkey");
+        });
+
         modelBuilder.Entity<Year>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("year_pkey");
