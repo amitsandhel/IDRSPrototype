@@ -21,20 +21,26 @@ namespace IDRSPrototype.Pages
             _context = context;
         }
 
-        // List of all TTS survey years.
-        public List<SelectListItem> YearsList { get; set; }
+        public ClassLibraryDatabase1.IndexViewModel refClass = new ClassLibraryDatabase1.IndexViewModel();
 
+        // List of all TTS survey years.
+        public IEnumerable<SelectListItem> YearsList { get; set; }
+        public List<SelectListItem> Categories { get; set; }
+        public List<SelectListItem> Tabulations { get; set; }
 
         public async Task OnGet()
         {
             if(_context.Years is not null )
             {
-                YearsList = _context.Years.Select(x => 
-                                                new SelectListItem
-                                                {
-                                                    Text = x.Year1.ToString(),
-                                                    Value = x.Id.ToString()
-                                                }).ToList();
+                // Get the years of all the tts survey.
+                List<ClassLibraryDatabase1.Models.Year> years = refClass.GetTTSYears(_context);
+
+                // convert the list of year into a selectlist to display to the dropdown
+                YearsList = years.Select(year => new SelectListItem
+                {
+                    Value = year.Id.ToString(),
+                    Text = year.Year1.ToString()
+                }).ToList();
             }
         }
 
