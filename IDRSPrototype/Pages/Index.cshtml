@@ -13,20 +13,9 @@
 </div>
 
 <div>
-    <select id="tabType" name="tabType">
-        <option value="cross">Cross Tabulation</option>
-        <option value="rec">Record Count</option>
-        <option value="freq">Frequency Distribution</option>
-    </select>
-    <select id="dataType" name="dataType">
-        <option value="hhld">Household</option>
-        <option value="pers">Person</option>
-        <option value="trip">Trip</option>
-        <option value="tran">Transit</option>
-    </select>
-    <input type="text" id="txtname" value="name" />
-
     <form method="post">
+        <select class="Tabulations" name="Tabulations" asp-items="Model.Tabulations"></select>
+        <select class="Categories" name="Categories" asp-items="Model.Categories"></select>
         <select class="Years" multiple="multiple" name="Years" asp-items="Model.YearsList"></select>
         <input type="submit" class="btn btn-primary" value="Submit" asp-page-handler="Submit" />
         <input type="button" class="btn btn-primary" value="Reset" />
@@ -75,9 +64,8 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.tabType').select2();
-        $('.dataType').select2();
-        $('.yearSelect').select2();
         $('.Years').select2();
+        $('.Categories').select2();
+        $('.Tabulations').select2();
     });
 </script>

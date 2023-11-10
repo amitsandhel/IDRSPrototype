@@ -8,27 +8,31 @@ using ClassLibraryDatabase1.Models;
 using ClassLibraryDatabase1.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClassLibraryDatabase1
+namespace ClassLibraryDatabase1;
+
+public class IndexViewModel
 {
-    public class IndexViewModel
+    public IndexViewModel() 
     {
-        public IndexViewModel() 
-        {
-            
-        }
-
-        public List<Models.Year> Years { get; set; }
-
-        // Initialize the repository class
-        public Repository repo = new Repository();
-
-        // Method to get all TTS survey Years
-        public List<Models.Year> GetTTSYears(Newttsadmv1Context context)
-        {
-            return repo.GetAllYearsFromDatabase(context);
-            //Years = context.Years.ToList();
-            //return Years;
-
-        }
+        
     }
+    
+    // Initialize the repository class
+    public Repository repo = new Repository();
+
+    // Method to get all TTS survey Years
+    public List<Models.Year> GetTTSYears(Newttsadmv1Context context)
+    {
+        return repo.GetAllYearsFromDatabase(context);
+    }
+
+    public List<Models.Tabulation> GetTTSTabulations(Newttsadmv1Context context)
+    {
+        return repo.GetAllTabulations(context);
+    }
+    public List<Models.Category> GetTTSCategories(Newttsadmv1Context context)
+    {
+        return repo.GetAllCategories(context);
+    }
+
 }
