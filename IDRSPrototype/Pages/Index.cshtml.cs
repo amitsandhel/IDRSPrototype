@@ -38,7 +38,7 @@ public class IndexModel : PageModel
             {
                 Value = x.Id.ToString(),
                 Text = x.Year1.ToString()
-            });
+            }).ToList();
 
             // Get the tts tabulations.
             Tabulations = refClass.GetTTSTabulations(_context).Select(x=> new SelectListItem
