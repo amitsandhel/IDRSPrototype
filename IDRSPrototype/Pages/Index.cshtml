@@ -14,9 +14,9 @@
 
 <div>
     <form method="post">
-        <select class="Tabulations" name="Tabulations" asp-items="Model.Tabulations"></select>
-        <select class="Categories" name="Categories" asp-items="Model.Categories"></select>
-        <select class="Years" multiple="multiple" name="Years" asp-items="Model.YearsList"></select>
+        <select class="Tabulations" name="TabulationId" asp-items="Model.Tabulations"></select>
+        <select class="Categories" name="CategoryId" asp-items="Model.Categories"></select>
+        <select class="Years" multiple="multiple" name="YearIdList" asp-items="Model.YearsList"></select>
         <input type="submit" class="btn btn-primary" value="Submit" asp-page-handler="Submit" />
         <input type="button" class="btn btn-primary" value="Reset" />
         <hr class="border border-primary" />

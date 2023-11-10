@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 
 namespace IDRSPrototype.Pages;
@@ -56,11 +57,28 @@ public class IndexModel : PageModel
         }
     }
 
-    public IActionResult OnPostSubmit(string tabType, string dataType, int[] Years, string txtname)
+    /// <summary>
+    /// bind the property to the html using the name= property in the html when you do this then
+    /// when that value is updated you can automatically retrieve the value without having to use
+    /// a local variable to extract the value
+    /// </summary>
+    [BindProperty]
+    public int TabulationId { get; set; } = default!;
+    [BindProperty]
+    public int CategoryId { get; set; } = default!;
+    [BindProperty]
+    public List<int> YearIdList { get; set; } = default!;
+
+    public IActionResult OnPostSubmit()
     {
-        // Get the selected value from the form
-        var ans = Request.Form["txtname"];
-        var years = Years;
-        return Redirect("/Privacy");
+        switch (TabulationId)
+        {
+            case 1:
+                return RedirectToPage("Privacy");
+            case 2:
+                return RedirectToPage("RecordCount");
+            default:
+                return RedirectToPage();
+        }
     }
 }

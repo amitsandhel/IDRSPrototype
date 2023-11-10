@@ -8,23 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\RecordCount.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ClassLibraryDatabase1\ClassLibraryDatabase1.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\RecordCount.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\RecordCount.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\RecordCount.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
