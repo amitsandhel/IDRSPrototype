@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Net;
-//using ClassLibraryDatabase1.Data;
 
 namespace IDRSPrototype.Pages;
 
@@ -25,38 +24,31 @@ public class IndexModel : PageModel
 
     // List of all TTS survey years.
     public IEnumerable<SelectListItem> YearsList { get; set; } = default!;
+    // List all Categories
     public IEnumerable<SelectListItem> Categories { get; set; } = default!;
+    // List all Tabulations
     public IEnumerable<SelectListItem> Tabulations { get; set; } = default!;
 
     public async Task OnGet()
     {
         if(_context.Years is not null )
         {
-            // Get the years of all the tts survey.
-            List<ClassLibraryDatabase1.Models.Year> years = refClass.GetTTSYears(_context);
 
-            // convert the list of year into a selectlist to display to the dropdown
-            YearsList = years.Select(year => new SelectListItem
+            YearsList = refClass.GetTTSYears(_context).Select(x => new SelectListItem
             {
-                Value = year.Id.ToString(),
-                Text = year.Year1.ToString()
-            }).ToList();
+                Value = x.Id.ToString(),
+                Text = x.Year1.ToString()
+            });
 
             // Get the tts tabulations.
-            List<ClassLibraryDatabase1.Models.Tabulation> tabulations = refClass.GetTTSTabulations(_context);
-
-            // convert the list of tabullations into a selectlist to display to the dropdown
-            Tabulations = tabulations.Select(x=> new SelectListItem
+            Tabulations = refClass.GetTTSTabulations(_context).Select(x=> new SelectListItem
             {
                 Value = x.Id.ToString(),
                 Text = x.Name.ToString()
             }).ToList();
 
             // Get the categories.
-            List<ClassLibraryDatabase1.Models.Category> categories = refClass.GetTTSCategories(_context);
-
-            // convert the list of year into a selectlist to display to the dropdown
-            Categories = categories.Select(x => new SelectListItem
+            Categories = refClass.GetTTSCategories(_context).Select(x=> new SelectListItem
             {
                 Value = x.Id.ToString(),
                 Text = x.Name.ToString()

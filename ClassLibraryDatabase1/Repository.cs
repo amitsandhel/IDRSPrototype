@@ -20,22 +20,15 @@ public class Repository
     {
         return context.Years.ToList();
     }
-
-    // List of all tabulations 
-    public List<Models.Tabulation> tablulations { get; set; } = default!;
-
+    // Get all Tabulations
     public List<Models.Tabulation> GetAllTabulations(Newttsadmv1Context context)
     {
         return context.Tabulations.ToList();
     }
 
-    // List of all categories
-    public List<Models.Category> categories { get; set; } = default!;
+    // Get all categories
     public List<Models.Category> GetAllCategories(Newttsadmv1Context context)
     {
         return context.Categories.ToList();
     }
-
-
-
 }
