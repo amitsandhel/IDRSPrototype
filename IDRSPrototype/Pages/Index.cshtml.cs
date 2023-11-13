@@ -1,4 +1,5 @@
 ﻿using ClassLibraryDatabase1.Models;
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -76,7 +77,7 @@ public class IndexModel : PageModel
             case 1:
                 return RedirectToPage("Privacy");
             case 2:
-                return RedirectToPage("RecordCount");
+                return RedirectToPage("RecordCount", new { YearIdList});
             default:
                 return RedirectToPage();
         }

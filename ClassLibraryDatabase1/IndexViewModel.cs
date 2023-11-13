@@ -12,11 +12,11 @@ namespace ClassLibraryDatabase1;
 
 public class IndexViewModel
 {
-    public IndexViewModel() 
+    public IndexViewModel()
     {
-        
+
     }
-    
+
     // Initialize the repository class
     public Repository repo = new Repository();
 
