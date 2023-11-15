@@ -15,4 +15,7 @@ public partial class Year
 
     [Column("year")]
     public int Year1 { get; set; }
+
+    [Column("description")]
+    public string? Description { get; set; }
 }
