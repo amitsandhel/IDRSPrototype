@@ -82,4 +82,11 @@ public class IndexModel : PageModel
                 return RedirectToPage();
         }
     }
+
+    public JsonResult OnGetYearDescription(int selectedValue)
+    {
+        Console.WriteLine("this ran");
+        string ans = refClass.GetYearDescription(_context, selectedValue);
+        return new JsonResult(ans);
+    }
 }

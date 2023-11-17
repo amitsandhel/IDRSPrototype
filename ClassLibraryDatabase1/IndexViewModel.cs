@@ -35,4 +35,26 @@ public class IndexViewModel
         return repo.GetAllCategories(context);
     }
 
+    /// <summary>
+    /// Get the description of the year for the TTS survey and check what to return
+    /// </summary>
+    /// <param name="context">instance of context</param>
+    /// <param name="yearDescription">the yearId to pass</param>
+    /// <returns></returns>
+    public string GetYearDescription(Newttsadmv1Context context, int yearDescription)
+    {
+        var ans = repo.GetYearDescription(context, yearDescription);
+        // if statement to check if empty ignore
+        return ans.Description;
+
+        //if (string.IsNullOrEmpty(ans.Description))
+        //{
+        //    return " ";
+        //}
+        //else
+        //{
+        //    return ans.Description;
+        //}
+    }
+
 }

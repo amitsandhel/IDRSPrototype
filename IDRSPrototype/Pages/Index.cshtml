@@ -16,7 +16,7 @@
     <form method="post">
         <select class="Tabulations" name="TabulationId" asp-items="Model.Tabulations"></select>
         <select class="Categories" name="CategoryId" asp-items="Model.Categories"></select>
-        <select class="Years" multiple="multiple" name="YearIdList" asp-items="Model.YearsList"></select>
+        <select id="yearsId" class="Years" multiple="multiple" name="YearIdList" asp-items="Model.YearsList" style="width:25%"></select>
         <input type="submit" class="btn btn-primary" value="Submit" asp-page-handler="Submit" />
         <input type="button" class="btn btn-primary" value="Reset" />
         <hr class="border border-primary" />
@@ -27,17 +27,8 @@
     <div id="accordion">
         <h3>Section 1</h3>
         <div>
-            <p>Content for section 1...</p>
+            <p id="advisoryInfoText">Content for section 1...</p>
         </div>
-        <h2>Section 2</h2>
-        <div>
-            <p>Content for section 2...</p>
-            <ol>
-                <li>sdfdfaf</li>
-                <li>sfdfsdfsdf</li>
-            </ol>
-        </div>
-        <!-- Add more sections as needed -->
     </div>
 </div>
 
@@ -83,15 +74,36 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        console.log("this ran");
-        $('.Years').select2();
+        $('.Years').select2({width:'resolve'});
         $('.Categories').select2();
         $('.Tabulations').select2();
+
+        // Listen for the select2:select event
+        $('.Years').on('select2:select', function (e) {
+            // Get the selected value
+            var selectedValue = e.params.data.id;
+            // run the ajax call
+            $.ajax({
+                type: 'GET',
+                url: '/?handler=YearDescription',
+                data: { selectedValue: selectedValue },
+                success: function (response) {
+                    console.log('ajax success', response);
+                    $('#advisoryInfoText').text(response);
+                },
+                error: function (response) {
+                    console.log('ajax error');
+                }
+            });
+        });
     });
+    // accordian make it collapsed
     $('#accordion').accordion({
         collapsible: true,
-        heightStyle: "content"
+        heightStyle: "content",
+        active: false
     });
     // accordion to put the table descriptions inside the accordion this is hardcoded values
     $('#instructionsaccordion').accordion({collapsible: true, active: false});
+
 </script>
