@@ -46,15 +46,5 @@ public class IndexViewModel
         var ans = repo.GetYearDescription(context, yearDescription);
         // if statement to check if empty ignore
         return ans.Description;
-
-        //if (string.IsNullOrEmpty(ans.Description))
-        //{
-        //    return " ";
-        //}
-        //else
-        //{
-        //    return ans.Description;
-        //}
     }
-
 }
