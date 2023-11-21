@@ -22,14 +22,15 @@ public class IndexModel : PageModel
         _context = context;
     }
 
+    // makke it private change the name 
     public ClassLibraryDatabase1.IndexViewModel refClass = new ClassLibraryDatabase1.IndexViewModel();
 
-    // List of all TTS survey years.
-    public IEnumerable<SelectListItem> YearsList { get; set; } = default!;
+    // IList is stable
+    public IList<SelectListItem> YearsList { get; set; } = default!;
     // List all Categories
-    public IEnumerable<SelectListItem> Categories { get; set; } = default!;
+    public IList<SelectListItem> Categories { get; set; } = default!;
     // List all Tabulations
-    public IEnumerable<SelectListItem> Tabulations { get; set; } = default!;
+    public IList<SelectListItem> Tabulations { get; set; } = default!;
 
     public async Task OnGet()
     {
