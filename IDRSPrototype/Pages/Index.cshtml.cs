@@ -22,8 +22,8 @@ public class IndexModel : PageModel
         _context = context;
     }
 
-    // makke it private change the name 
-    public ClassLibraryDatabase1.IndexViewModel refClass = new ClassLibraryDatabase1.IndexViewModel();
+    // private instance of the IndexViewModel 
+    private readonly ClassLibraryDatabase1.IndexViewModel IndexViewModel = new ClassLibraryDatabase1.IndexViewModel();
 
     // IList is stable
     public IList<SelectListItem> YearsList { get; set; } = default!;
@@ -37,21 +37,21 @@ public class IndexModel : PageModel
         if(_context.Years is not null )
         {
 
-            YearsList = refClass.GetTTSYears(_context).Select(x => new SelectListItem
+            YearsList = IndexViewModel.GetTTSYears(_context).Select(x => new SelectListItem
             {
                 Value = x.Id.ToString(),
                 Text = x.Year1.ToString()
             }).ToList();
 
             // Get the tts tabulations.
-            Tabulations = refClass.GetTTSTabulations(_context).Select(x=> new SelectListItem
+            Tabulations = IndexViewModel.GetTTSTabulations(_context).Select(x=> new SelectListItem
             {
                 Value = x.Id.ToString(),
                 Text = x.Name.ToString()
             }).ToList();
 
             // Get the categories.
-            Categories = refClass.GetTTSCategories(_context).Select(x=> new SelectListItem
+            Categories = IndexViewModel.GetTTSCategories(_context).Select(x=> new SelectListItem
             {
                 Value = x.Id.ToString(),
                 Text = x.Name.ToString()
@@ -87,7 +87,7 @@ public class IndexModel : PageModel
     public JsonResult OnGetYearDescription(int selectedValue)
     {
         Console.WriteLine("this ran");
-        string ans = refClass.GetYearDescription(_context, selectedValue);
+        string ans = IndexViewModel.GetYearDescription(_context, selectedValue);
         return new JsonResult(ans);
     }
 }
